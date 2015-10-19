@@ -34,25 +34,25 @@
    <div id="simcalendar"></div>
   ###js代码：
 		$("#simcalendar").SimCalendar(
-		    {
-		     '2015-10-18':{price:1234,num:0},
-		     '2015-10-20':{price:1234,num:222}
-		    },
-		    {
-		    extendCell: function(curDate, data){//参数curDate:当前日期的Date类型数据，参数data:dateData中与当前日期对应的数据
-             if(Date.parse(curDate)< Date.parse(new Date()))//不显示当前日期之前的数据
-                 return curDate.getDate();
-             var ht=[];
-             ht.push("<div class='date'>",curDate.getDate(),"</div>");
-             ht.push("<div class='price'>",data.price,"元</div>")
-             if(data.num>0)
-                 ht.push("<div class='avilable'>有位<div>");
-              else
-                 ht.push("<div class='no_avilable'>无位</div>");
-             return ht.join("");
-         },
-         onClick:function(date,dateData){//参数date:被点击的日期，如2015-10-19，参数dateData:同SimCalendar的第一个参数
-             if(dateData[date])
-                 alert(dateData[date].num);
-         }
-     });
+		{
+			'2015-10-18':{price:1234,num:0},
+			'2015-10-20':{price:1234,num:222}
+		},
+		{
+			extendCell: function(curDate, data){//参数curDate:当前日期的Date类型数据，参数data:dateData中与当前日期对应的数据
+				if(Date.parse(curDate)< Date.parse(new Date()))//不显示当前日期之前的数据
+				return curDate.getDate();
+				var ht=[];
+				ht.push("<div class='date'>",curDate.getDate(),"</div>");
+				ht.push("<div class='price'>",data.price,"元</div>")
+				if(data.num>0)
+					ht.push("<div class='avilable'>有位<div>");
+				else
+					ht.push("<div class='no_avilable'>无位</div>");
+				return ht.join("");
+			},
+			onClick:function(date,dateData){//参数date:被点击的日期，如2015-10-19，参数dateData:同SimCalendar的第一个参数
+				if(dateData[date])
+				alert(dateData[date].num);
+			}
+		});
