@@ -1,7 +1,7 @@
 # Calendar
 
 
-## 使用：
+## 使用
 1. 引用SimCalendar.css
   
 2. 引用SimCalendar.js
@@ -28,11 +28,13 @@
 			extendCell: function(curDate, data){}  //扩展格的默认内容填充，curDate为当前日期的Date类型数据，data为当前日期对应的传入数据
 			onClick:function(date,dateData){ }              //点击日期事件函数，date为当前日期，dateData同SimCalendar参数dateData
 
-##  示例：
+##  示例
 
-  ###html代码：
-   <div id="simcalendar"></div>
-  ###js代码：
+### html代码：
+
+		<div id="simcalendar"></div>
+   
+### js代码：
 		$("#simcalendar").SimCalendar(
 		{
 			'2015-10-18':{price:1234,num:0},
