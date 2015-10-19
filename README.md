@@ -25,8 +25,10 @@
 			curMonthNormalCellClass: "normal",              //正常日期的css类
 			prevNextMonthDaysVisible: true,                 //是否显示不属于本月的日期
 			weekDayNames:["一","二","三","四","五","六","日"],//日期显示文字
-			extendCell: function(curDate, data){}  //扩展格的默认内容填充，curDate为当前日期的Date类型数据，data为当前日期对应的传入数据
-			onClick:function(date,dateData){ }              //点击日期事件函数，date为当前日期，dateData同SimCalendar参数dateData
+			extendCell: function(curDate, data){}           //扩展格的默认内容填充，curDate为当前日期的Date类型
+											//   数据，data为当前日期对应的传入数据
+			onClick:function(date,dateData){ }              //点击日期事件函数，date为当前日期，
+											//    dateData同SimCalendar参数dateData
 
 ##  示例
 
