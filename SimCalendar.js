@@ -60,8 +60,8 @@
 
     var SimCalendar = function($calendar_container,dateData, options){
         this.settings = {
-                firstDayOfWeek: 7,                              //一星期的第一天，取值1到7，取7为星期日为第一天
-                baseClass: "calendar",                          //日历的css类
+                firstDayOfWeek: 1,                              //一星期的第一天，取值1到7，取7为星期日为第一天
+                baseClass: "sim-calendar",                          //日历的css类
                 curDayClass: "cur-day",                         //当前日期的css类
                 prevMonthCellClass: "prev-month",               //上一个月日期的css类
                 nextMonthCellClass: "next-month",               //下一个月日期的css类
@@ -104,16 +104,19 @@
             //日期
             ht.push("<tr>");
             ht.push("<th colspan='7' style='width:100%;'>" +
-                "<div style='float:left;width:10%;text-align:center;cursor:pointer' id='", this.simId, "_prevMonth' title='上一月'><</div>" +
+                "<div style='float:left;width:10%;text-align:center;cursor:pointer' class='change-month' id='", this.simId, "_prevMonth' title='上一月'><</div>" +
                 "<div style='float:left;text-align:center;width:80%'>", year, "年", month, "月</div>" +
-                "<div style='float:right;width:10%; text-align:center;cursor:pointer'' id='", this.simId, "_nextMonth' title='下一月'>></div>" +
+                "<div style='float:right;width:10%; text-align:center;cursor:pointer'' class='change-month' id='", this.simId, "_nextMonth' title='下一月'>></div>" +
                 "</th>");
             ht.push("</tr>");
             //星期
             ht.push("<tr>");
             for (var i = 0; i < 7; i++) {
                 var day = ((i + this.settings.firstDayOfWeek) == 7 ? 7 : (i + this.settings.firstDayOfWeek) % 7)-1;
-                ht.push("<th><b>", this.settings.weekDayNames[day], "</b></th>")
+                if(day==5 | day ==6)
+	                ht.push("<th class='weekend'><b>", this.settings.weekDayNames[day], "</b></th>")
+                else
+	                ht.push("<th><b>", this.settings.weekDayNames[day], "</b></th>")
             }
             ht.push("</tr>");
             return ht.join("");
@@ -198,12 +201,17 @@
         },
 
         _buildCell: function(curDate) {
-            var ht = [];
-            var curDate_str=curDate.getFullYear()+"-"+(curDate.getMonth()+1)+"-"+curDate.getDate();
+            var ht = [];            
+            var moth_str = (curDate.getMonth()+1)>9?(curDate.getMonth()+1).toString():"0"+(curDate.getMonth()+1).toString();
+            var date_str = curDate.getDate() > 9?curDate.getDate().toString():"0"+curDate.getDate().toString();
+            var curDate_str_0=curDate.getFullYear()+"-"+moth_str+"-"+date_str;//例：2016-01-01
+            var curDate_str=curDate.getFullYear()+"-"+(curDate.getMonth()+1)+"-"+curDate.getDate();//例：2016-1-1
             if(this.dateData[curDate_str]){
                 ht.push(this.settings.extendCell(curDate,this.dateData[curDate_str]));
+            }else if(this.dateData[curDate_str_0]){
+                ht.push(this.settings.extendCell(curDate,this.dateData[curDate_str_0]));
             }else{
-                ht.push(curDate.getDate());
+                ht.push("<div class='date'>"+curDate.getDate()+"</div><div class='bars'>---</div>");
             }
             return ht.join("");
         },
@@ -303,7 +311,4 @@
     }
 
 })($,window,document);
-
-
-
 
