@@ -51,6 +51,13 @@
 */
 ;(function($,window,document,undefined){
     $.fn.SimCalendar = function(dateData, options){
+    	var newDateData = {};
+    	for(key in dateData){//去除日期中的全部个位0，如2016-01-01 改为 2016-1-1
+    		var new_key = key.replace(/-0/g,"-");
+    		newDateData[new_key] = dateData[key];
+    	}
+    	dateData = newDateData;
+    	
         var simCalendar = new SimCalendar(this, dateData, options);
         var curDate= new Date();
         simCalendar.renderCalendar(curDate.getFullYear(),curDate.getMonth()+1);
@@ -202,14 +209,9 @@
 
         _buildCell: function(curDate) {
             var ht = [];            
-            var moth_str = (curDate.getMonth()+1)>9?(curDate.getMonth()+1).toString():"0"+(curDate.getMonth()+1).toString();
-            var date_str = curDate.getDate() > 9?curDate.getDate().toString():"0"+curDate.getDate().toString();
-            var curDate_str_0=curDate.getFullYear()+"-"+moth_str+"-"+date_str;//例：2016-01-01
             var curDate_str=curDate.getFullYear()+"-"+(curDate.getMonth()+1)+"-"+curDate.getDate();//例：2016-1-1
             if(this.dateData[curDate_str]){
                 ht.push(this.settings.extendCell(curDate,this.dateData[curDate_str]));
-            }else if(this.dateData[curDate_str_0]){
-                ht.push(this.settings.extendCell(curDate,this.dateData[curDate_str_0]));
             }else{
                 ht.push("<div class='date'>"+curDate.getDate()+"</div><div class='bars'>---</div>");
             }
@@ -244,7 +246,7 @@
             });
 
             $("body").on("click","td[date]",function(){
-                t.settings.onClick($(this).attr("date"), t.dateData);
+	            t.settings.onClick($(this).attr("date").replace(/-0/g,"-"), t.dateData);
             });
 
 
@@ -311,4 +313,8 @@
     }
 
 })($,window,document);
+
+
+
+
 
