@@ -3,16 +3,16 @@
 
 ## 使用
 1. 引用SimCalendar.css
+`<link href="SimCalendar.css" rel="stylesheet">`
   
 2. 引用SimCalendar.js
+`<script src="SimCalendar.js"></script>`
 
-3. 使用
+3. 使用(下面两种方式)
 
-  $(selector).SimCalendar();
+  - `$(selector).SimCalendar();`
 
-  或
-
-  $(selector).SimCalendar(dateData,options);
+  - `$(selector).SimCalendar(dateData,options);`
 
 ##  参数说明：
 		dateData参见示例代码；
@@ -34,10 +34,10 @@
 
 ### html代码：
 
-		<div id="simcalendar"></div>
+`<div id="simcalendar"></div>`
    
 ### js代码：
-		$("#simcalendar").SimCalendar(
+	$("#simcalendar").SimCalendar(
 		{
 			'2015-10-18':{price:1234,num:0},
 			'2015-10-20':{price:1234,num:222}
