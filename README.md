@@ -3,10 +3,12 @@
 
 ## 使用
 1. 引用SimCalendar.css
-`<link href="SimCalendar.css" rel="stylesheet">`
+
+	`<link href="SimCalendar.css" rel="stylesheet">`
   
 2. 引用SimCalendar.js
-`<script src="SimCalendar.js"></script>`
+
+	`<script src="SimCalendar.js"></script>`
 
 3. 使用(下面两种方式)
 
