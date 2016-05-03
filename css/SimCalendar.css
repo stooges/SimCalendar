@@ -1,0 +1,70 @@
+.calendar {
+	border:1px solid black;
+}
+
+.calendar tr, .calendar td {
+	margin:0;
+	padding:0;
+}
+
+.prev-month, .next-month {
+	color: Gray;
+}
+.calendar td {
+	width:75px;
+	height:58px;
+	text-align: center;
+	border:1px dotted #DBDBDB;
+	padding:2px 3px;
+}
+.calendar th {
+	background-color: #b8eaff;
+	text-align:center;
+	padding:2px 3px;
+	font-weight: normal;
+	height:25px;
+}
+.cur-day {
+	background:#ccc;
+	/*font-weight:bold;*/
+	color:#000;
+}
+.calendar td{
+	font-size: 12px;
+}
+
+.calendar .date{
+	font-size: 12px;
+}
+
+.calendar .price{
+	clear:both;
+	float:left;
+	font-size: 10px;
+	padding-top:0px;
+    padding-bottom:0px;
+    margin-top:0px;
+    margin-bottom:0px;
+}
+
+.calendar .avilable{
+	clear:both;
+	float:left;
+	color: green;
+	font-size: 10px;
+	padding-top:0px;
+	padding-bottom:0px;
+	margin-top:0px;
+	margin-bottom:0px;
+}
+
+.calendar .no_avilable{
+	clear:both;
+	float:left;
+	color:red;
+	font-size: 10px;
+	padding-top:0px;
+    padding-bottom:0px;
+    margin-top:0px;
+    margin-bottom:0px;
+}
